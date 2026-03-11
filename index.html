@@ -1,38 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Best Sellers</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  <main>
-    <!-- Section Header -->
-    <header>
-      <h1>Best Sellers</h1>
-      <a href="#">
-        Shop All Best Sellers
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </a>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Sellers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main>
+      <!-- Section Header -->
+      <header>
+        <h1>Best Sellers</h1>
+        <a href="#">
+          Shop All Best Sellers
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </a>
+      </header>
 
-    <!-- Product Grid -->
-    <section>
-      <div id="product-grid">
-        <!-- Products injected via JS -->
+      <!-- Product Grid -->
+      <section>
+        <div
+          id="product-grid"
+          class="grid grid-cols-2 gap-4 md:flex md:gap-6 md:overflow-x-auto md:pb-4 product-scroll"
+        >
+          <!-- Products injected via JS -->
+        </div>
+      </section>
+
+      <!-- Show More Button (Mobile Only) -->
+      <div>
+        <button id="show-more-btn" type="button">Show More</button>
       </div>
-    </section>
-
-    <!-- Show More Button (Mobile Only) -->
-    <div>
-      <button id="show-more-btn" type="button">
-        Show More
-      </button>
-    </div>
-  </main>
-  <script src="script.js"></script>
-</body>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -14,7 +14,7 @@ const products = [
     name: "NIKE BOTTLE OUTSIDE VIBES FOREST GREEN",
     price: 104.95,
     isBestSeller: true,
-    promoBadge: { text: "SAVE 15%", color: "bg-green-600" },
+    promoBadge: { text: "SAVE 15%", color: "bg-[#5C7962]" },
     rating: 4,
     reviews: 1234,
     image1: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop",
@@ -35,7 +35,7 @@ const products = [
     name: "OUTSIDE VIBES CAP FOREST GREEN",
     price: 104.95,
     isBestSeller: true,
-    promoBadge: { text: "SAVE 15%", color: "bg-green-600" },
+    promoBadge: { text: "SAVE 15%", color: "bg-[#5C7962]" },
     rating: 4,
     reviews: 1234,
     image1: "https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=400&h=400&fit=crop",
@@ -108,31 +108,35 @@ function generateStars(rating) {
 }
 
 function createProductCard(product, index) {
+  // 3d: badge positioning
   const bestSellerBadge = product.isBestSeller
-    ? '<span class="bg-black text-white">BEST SELLER</span>'
+    ? `<span class="absolute top-2 left-2 z-10 px-2 py-1 text-[10px] font-normal leading-none tracking-[0.06em] text-center bg-white text-black border border-black rounded-full font-['Bebas_Neue']">BEST SELLER</span>`
     : '';
 
   const promoBadge = product.promoBadge
-    ? `<span class="${product.promoBadge.color} text-white">${product.promoBadge.text}</span>`
+    ? `<span class="absolute top-2 right-2 z-10 px-2 py-1 text-[10px] font-normal leading-none tracking-[0.06em] text-center rounded-full border border-black ${product.promoBadge.color} text-white font-['Bebas_Neue']">${product.promoBadge.text}</span>`
     : '';
 
   const hiddenClass = index >= 4 ? 'hidden-mobile' : '';
 
   return `
-    <article class="product-card ${hiddenClass}" data-index="${index}">
-      <div>
+    <article class="product-card flex-shrink-0 w-full md:w-64 ${hiddenClass}" data-index="${index}">
+      <!-- 3b: image container with aspect ratio -->
+      <div class="relative aspect-square bg-gray-100 rounded-lg overflow-hidden mb-3">
         ${bestSellerBadge}
         ${promoBadge}
-        <img class="product-image primary" src="${product.image1}" alt="${product.name}" />
-        <img class="product-image secondary opacity-0" src="${product.image2}" alt="${product.name} alternate view" />
+        <!-- 3c: stacked images with transitions -->
+        <img class="product-image primary absolute inset-0 w-full h-full object-cover transition-opacity duration-300" src="${product.image1}" alt="${product.name}" loading="lazy" />
+        <img class="product-image secondary absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300" src="${product.image2}" alt="${product.name} alternate view" loading="lazy" />
       </div>
-      <div>
-        <h3>${product.name}</h3>
-        <div>
-          <div>${generateStars(product.rating)}</div>
-          <span>${product.reviews.toLocaleString()} Reviews</span>
+      <!-- 3e: typography -->
+      <div class="space-y-1">
+        <h3 class="text-[18px] font-normal uppercase leading-none tracking-[0.03em] line-clamp-2 font-['Bebas_Neue']">${product.name}</h3>
+        <div class="flex items-center gap-2">
+          <div class="flex">${generateStars(product.rating)}</div>
+          <span class="text-[12px] font-normal leading-none font-['Poppins'] text-gray-500">${product.reviews.toLocaleString()} Reviews</span>
         </div>
-        <p>$${product.price.toFixed(2)}</p>
+        <p class="text-[16px] font-medium leading-none uppercase font-['Poppins']">$${product.price.toFixed(2)}</p>
       </div>
     </article>
   `;

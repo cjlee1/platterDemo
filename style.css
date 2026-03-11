@@ -25,15 +25,28 @@
 
   /* WebKit browsers (Chrome, Safari, Edge) */
   .product-scroll::-webkit-scrollbar {
-    height: 1px !important;
+    height: 1px;
     -webkit-appearance: none;
-    background: transparent !important;
+    background-color: #DDD6D7;
   }
   .product-scroll::-webkit-scrollbar-track {
-    background-color: #DDD6D7 !important;
-    margin: 0 auto;
+    background-color: #DDD6D7;
   }
   .product-scroll::-webkit-scrollbar-thumb {
-    background-color: #000000 !important;
+    background-color: #000000;
+  }
+
+  /* Expand scrollbar on hover over container */
+  .product-scroll:hover::-webkit-scrollbar,
+  .product-scroll:active::-webkit-scrollbar {
+    height: 6px;
+  }
+  .product-scroll:hover::-webkit-scrollbar-track,
+  .product-scroll:active::-webkit-scrollbar-track {
+    background-color: #DDD6D7;
+  }
+  .product-scroll:hover::-webkit-scrollbar-thumb,
+  .product-scroll:active::-webkit-scrollbar-thumb {
+    background-color: #000000;
   }
 }

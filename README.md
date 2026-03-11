@@ -18,12 +18,9 @@ A responsive product grid built with HTML, TailwindCSS, and Vanilla JavaScript.
 
 - On mobile devices, only 4 products are visible initially.
 Click "Show More" to reveal all 10 products with a smooth animation.
-
-
-- The horizontal scrollbar on desktop increases from 4px to 6px when hovered.
-
+- added badges
 ## Assumptions
-- used the same font from gigma
+- used the same font from figma
 - picked random secondary images
 - i assumed best seller and 15% badge was only showing on the first 5 images
 - 
@@ -31,6 +28,7 @@ Click "Show More" to reveal all 10 products with a smooth animation.
 ## If i had more time....
 - tighten up the spacing and clean up font, make sure everythiung is responsive
 - Add more accessibility
+
 
 
 

@@ -95,7 +95,7 @@ const products = [
     rating: 4,
     reviews: 567,
     image1: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop",
-    image2: "https://images.unsplash.com/photo-1497515114889-1f074bca7973?w=400&h=400&fit=crop"
+    image2: "https://images.unsplash.com/photo-1616241673111-508b4662c707?w=400&h=400&fit=crop"
   }
 ];
 
@@ -107,7 +107,7 @@ function generateStars(rating) {
   ).join('');
 }
 
-function createProductCard(product) {
+function createProductCard(product, index) {
   const bestSellerBadge = product.isBestSeller
     ? '<span class="bg-black text-white">BEST SELLER</span>'
     : '';
@@ -116,8 +116,10 @@ function createProductCard(product) {
     ? `<span class="${product.promoBadge.color} text-white">${product.promoBadge.text}</span>`
     : '';
 
+  const hiddenClass = index >= 4 ? 'hidden-mobile' : '';
+
   return `
-    <article class="product-card">
+    <article class="product-card ${hiddenClass}" data-index="${index}">
       <div>
         ${bestSellerBadge}
         ${promoBadge}
@@ -138,7 +140,7 @@ function createProductCard(product) {
 
 function renderProducts() {
   const grid = document.getElementById('product-grid');
-  grid.innerHTML = products.map(product => createProductCard(product)).join('');
+  grid.innerHTML = products.map((product, index) => createProductCard(product, index)).join('');
 }
 
 function initImageHover() {
@@ -158,7 +160,31 @@ function initImageHover() {
   });
 }
 
+function initShowMore() {
+  const btn = document.getElementById('show-more-btn');
+  const hiddenCards = document.querySelectorAll('.hidden-mobile');
+  let isExpanded = false;
+
+  btn.addEventListener('click', () => {
+    isExpanded = !isExpanded;
+
+    hiddenCards.forEach((card, index) => {
+      if (isExpanded) {
+        card.style.display = 'block';
+        // stagger animation for smooth reveal
+        setTimeout(() => card.classList.add('show'), index * 50);
+      } else {
+        card.classList.remove('show');
+        setTimeout(() => card.style.display = 'none', 300);
+      }
+    });
+
+    btn.textContent = isExpanded ? 'Show Less' : 'Show More';
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   initImageHover();
+  initShowMore();
 });

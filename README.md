@@ -8,7 +8,7 @@ A responsive product grid built with HTML, TailwindCSS, and Vanilla JavaScript.
 - Vanilla JavaScript (ES6+)
 
 ## Live Demo
-[View Demo](https://YOUR_USERNAME.github.io/platterDemo/)
+[View Demo](https://cjlee1.github.io/platterDemo/)
 
 ## Local Development
  open `index.html` in your browser. No build step required.

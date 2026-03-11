@@ -8,22 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&family=Source+Serif+Pro:wght@900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* Mobile show/hide for products 5-10 */
-      @media (max-width: 767px) {
-        .hidden-mobile {
-          display: none;
-          opacity: 0;
-          transform: translateY(-10px);
-          transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .hidden-mobile.show {
-          display: block;
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body class="bg-white">
     <main class="max-w-7xl mx-auto px-4 py-12">
@@ -53,7 +38,7 @@
       <section>
         <div
           id="product-grid"
-          class="grid grid-cols-2 gap-4 md:flex md:gap-6 md:overflow-x-auto md:pb-4 product-scroll"
+          class="grid grid-cols-2 gap-4 md:flex md:gap-6 md:overflow-x-scroll md:pb-4 product-scroll"
         >
           <!-- Products injected via JS -->
         </div>
